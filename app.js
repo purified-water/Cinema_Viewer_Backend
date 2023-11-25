@@ -1,4 +1,5 @@
 const express = require('express')
+const fs = require('fs')
 require('dotenv').config();
 const dbHandle = require('./db/db')
 
@@ -8,9 +9,21 @@ const path = require('path')
 const port = process.env.PORT;
 const hostname = 'localhost';
 
+//Lay data tu json 
+const jsonData = JSON.parse(fs.readFileSync('./data/data.json', 'utf-8'));
+
+// console.log('JSON la', jsonData.Movies);
+
+// TO DO 
+/* Viet 1 ham hay file để lọc từng mảng movies, actors, reviews trong data
+    
+    Đọc từng data của movies, actors, reviews
+    Gọi hàm trong db.js để insert vào db
+
+    */
+
 dbHandle.createDatabase()
 
-console.log('Created');
 
 app.get("/", (req, res) => {
     res.send('HELLO WORLD')
