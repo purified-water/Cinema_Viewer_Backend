@@ -1,12 +1,16 @@
 const express = require('express')
 require('dotenv').config();
+const dbHandle = require('./db/db')
+
 
 const app = express();
 const path = require('path')
 const port = process.env.PORT;
 const hostname = 'localhost';
 
+dbHandle.createDatabase()
 
+console.log('Created');
 
 app.get("/", (req, res) => {
     res.send('HELLO WORLD')
@@ -15,13 +19,13 @@ app.get("/", (req, res) => {
 app.set("views", "./views");
 app.set("view engine", "html");
 
-// Routing
-const userRouter = require("./routers/user.r");
-app.use("/", userRouter);
+// // Routing
+// const userRouter = require("./routers/user.r");
+// app.use("/", userRouter);
 
-// Middleware
-const middleware = require("./middlewares/mdw");
-app.use(middleware);
+// // Middleware
+// const middleware = require("./middlewares/mdw");
+// app.use(middleware);
 
 
 app.listen(port, hostname, () => {
