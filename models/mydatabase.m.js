@@ -12,5 +12,17 @@ const cn = {
     password: process.env.DB_PW,
     max: 30
 };
-const db = pgp(cn);
-module.exports = db;
+const dbase = pgp(cn);
+
+// dbase.connect()
+//     .then(obj => {
+//         console.log('Connected to the database');
+//         obj.done(); // success, release the connection
+//     })
+//     .catch(error => {
+//         console.error('Error connecting to the database:', error);
+//     });
+
+module.exports = dbase;
+
+// TAIJ SAO LẠI GỌI CÁI NÀY TRƯỚC KHI TẠO DATABASE

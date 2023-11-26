@@ -9,6 +9,8 @@ exports.load = async(req, res, next) => {
         // let topFavorite = movieModel.topFavorite() || null; //To implement
 
         // res.render("home", highestRating, highestBoxOffice, topFavorite);
+        res.render("home");
+        
     } catch (error) {
 
         next(error);

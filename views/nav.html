@@ -1,0 +1,28 @@
+<!-- <div v-if="isLoading" class="loading-overlay">
+      <div class="loading-spinner">Loading...</div>
+    </div> -->
+<nav
+  class="navbar navbar-expand-lg border border-0.5 rounded-2 {{ mode }}"
+  id="navbar"
+>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#" @click="goBack">//Home//</a>
+
+    <form class="d-flex" role="search">
+      <div class="form-group me-2">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search"
+          v-model="searchInput"
+        />
+      </div>
+      <input
+        type="submit"
+        class="btn btn-outline-success"
+        value="Search"
+        id="searchbtn"
+      />
+    </form>
+  </div>
+</nav>

@@ -1,5 +1,9 @@
 const express = require('express');
-const routers = express.Router();
+const router = express.Router();
+const uploadToDB = require('../controllers/loadData.c')
 
-const movieController = require('../controllers/movies.c')
-routers.get("/", )
+const homeController = require('../controllers/home.c');
+router.get("/", homeController.load); // uploadToDB.loadData
+
+
+module.exports = router;

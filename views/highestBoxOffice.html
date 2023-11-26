@@ -1,0 +1,35 @@
+<!-- TOP BOX OFFICE -->
+<div class="row mt-5">
+  <div class="col-6 d-flex align-items-center">
+    <span class="fs-4">Top Box Office</span>
+  </div>
+  <div class="col-6 d-flex justify-content-end">
+    <ul class="pagination">
+      <li class="page-item-m">
+        <a class="page-link" href="#"> </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="d-flex justify-content-around">
+  <a class="page-link d-flex align-items-center" aria-label="Previous">
+    <span class="arrow" aria-hidden="true">&lt;</span>
+  </a>
+
+  <div class="movie-item">
+    <div class="container" style="width: 100%; height: 100%">
+      <img
+        class="rounded-1"
+        src="https://m.media-amazon.com/images/M/MV5BZjhhMThhNDItNTY2MC00MmU1LTliNDEtNDdhZjdlNTY5ZDQ1XkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_Ratio0.6762_AL_.jpg"
+        alt="movie.title"
+        style="width: 100%; height: 100%; object-fit: fill"
+      />
+      <div class="card text-bg-dark">{{ movie.title }} ({{ movie.year}})</div>
+    </div>
+  </div>
+
+  <a class="page-link d-flex align-items-center" aria-label="Next">
+    <span class="arrow" aria-hidden="true">&gt;</span>
+  </a>
+</div>

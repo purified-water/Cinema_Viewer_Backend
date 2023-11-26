@@ -3,13 +3,21 @@ const reviewsModel = require('../models/reviews.m')
 
 async function insertAll() {
     let reviewList = data.getReviews();
-    reviewList.forEach(review => {
-        let a = reviewsModel.byReviewID(review.movieid, review.username);
-        if (!a) {
-            reviewsModel.insertReview(review);
+
+
+
+    // console.log('List', reviewList[0]);
+    for (const review of reviewList) {
+        for (const item of review.items) {
+            let a = await reviewsModel.byReviewID(review.movieid, item.username);
+            if(!a) {
+                reviewsModel.insertReview(review, item);
+            }
         }
+       
         
-    });
+        
+    }
     console.log('inserted all reviews');
 }
 
