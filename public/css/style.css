@@ -1,0 +1,16 @@
+body {
+    margin: 5px 5px 5px 5px;
+}
+
+.movie-item {
+    height: 200px;
+    width: 370px;
+    border-radius: 2px;
+    transition: transform 0.3s; /* Add a smooth transition effect */
+  
+}
+.movie-item:hover {
+    transform: scale(1.2); /* Expand the card when hovered over */
+    z-index: 100;
+  
+}

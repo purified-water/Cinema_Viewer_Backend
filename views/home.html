@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phim</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="../public/css/style.css" />
+  </head>
+  <body>
+    <div
+      class="alert border border-1 rounded-2 p-2 mb-2"
+      role="alert"
+      id="header"
+    >
+      <div class="container-fluid">
+        <div class="d-flex justify-content-between align-items-center">
+          <p class="m-0">21120588</p>
+          <p class="fs-3">Movie information</p>
+          <div>
+            <div class="form-check form-switch">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="darkmodeToggle"
+              />
+              <label class="form-check-label" for="darkmodeToggle"
+                >Dark Mode</label
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div v-if="isLoading" class="loading-overlay">
+      <div class="loading-spinner">Loading...</div>
+    </div> -->
+    <nav
+      class="navbar navbar-expand-lg border border-0.5 rounded-2 {{ mode }}"
+      id="navbar"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#" @click="goBack">//Home//</a>
+
+        <form class="d-flex" role="search">
+          <div class="form-group me-2">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search"
+              v-model="searchInput"
+            />
+          </div>
+          <input
+            type="submit"
+            class="btn btn-outline-success"
+            value="Search"
+            id="searchbtn"
+          />
+        </form>
+      </div>
+    </nav>
+
+    <!-- HIGHEST RATINGS -->
+    <div class="container p-0 mt-3">
+      <div class="container d-flex justify-content-between">
+        <div class="d-flex align-items-center">
+          <span class="arrow" aria-hidden="true">&lt;</span>
+        </div>
+
+        <div
+          class="card border border-0 rounded-1"
+          style="width: 18rem; height: 26rem"
+        >
+          <img
+            class="rounded-1"
+            src="https://m.media-amazon.com/images/M/MV5BZjhhMThhNDItNTY2MC00MmU1LTliNDEtNDdhZjdlNTY5ZDQ1XkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_Ratio0.6762_AL_.jpg"
+            alt="movie.title"
+            style="width: 100%; height: 100%; object-fit: cover"
+          />
+          <div
+            class="card-img-overlay d-flex flex-column justify-content-end"
+            style="height: 400px"
+          >
+            <div
+              class="container d-flex justify-content-center"
+              style="height: 400px"
+              @click="showMovieDetail(movie)"
+            ></div>
+
+            <div class="d-flex justify-content-center">
+              <ul class="pagination">
+                <li v-for="n in recentPages.total_pages" class="page-item-m">
+                  <a class="page-link" href="#"> </a>
+                </li>
+              </ul>
+            </div>
+            <p
+              class="d-flex justify-content-center card-text text-white text-center m-0"
+              style="text-shadow: 3px 3px 3px black"
+            >
+              {{movie.title}}
+            </p>
+            <div
+              class="d-flex justify-content-evenly card-text text-warning text-center m-0"
+              style="text-shadow: 3px 3px 3px black"
+            >
+              <p class="m-0">{{runtimeStr}}</p>
+
+              <p class="m-0">{{ratings.imDb}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex align-items-center">
+          <div class="arrow" aria-hidden="true">&gt;</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOP BOX OFFICE -->
+    <div class="row mt-5">
+      <div class="col-6 d-flex align-items-center">
+        <span class="fs-4">Top Box Office</span>
+      </div>
+      <div class="col-6 d-flex justify-content-end">
+        <ul class="pagination">
+          <li class="page-item-m">
+            <a class="page-link" href="#"> </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-around">
+      <a class="page-link d-flex align-items-center" aria-label="Previous">
+        <span class="arrow" aria-hidden="true">&lt;</span>
+      </a>
+
+      <div class="movie-item">
+        <div class="container" style="width: 100%; height: 100%">
+          <img
+            class="rounded-1"
+            src="https://m.media-amazon.com/images/M/MV5BZjhhMThhNDItNTY2MC00MmU1LTliNDEtNDdhZjdlNTY5ZDQ1XkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_Ratio0.6762_AL_.jpg"
+            alt="movie.title"
+            style="width: 100%; height: 100%; object-fit: fill"
+          />
+          <div class="card text-bg-dark">
+            {{ movie.title }} ({{ movie.year}})
+          </div>
+        </div>
+      </div>
+
+      <a class="page-link d-flex align-items-center" aria-label="Next">
+        <span class="arrow" aria-hidden="true">&gt;</span>
+      </a>
+    </div>
+
+    <!-- TOP FAVORITE -->
+    <div class="row mt-5">
+      <div class="col-6 d-flex align-items-center">
+        <span class="fs-4">Top Favorite</span>
+      </div>
+      <div class="col-6 d-flex justify-content-end">
+        <ul class="pagination">
+          <li class="page-item-m">
+            <a class="page-link" href="#"> </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-around">
+      <a class="page-link d-flex align-items-center" aria-label="Previous">
+        <span class="arrow" aria-hidden="true">&lt;</span>
+      </a>
+
+      <div class="movie-item">
+        <div class="container" style="width: 100%; height: 100%">
+          <img
+            class="rounded-1"
+            src="https://m.media-amazon.com/images/M/MV5BZWFhOGU5NDctY2Q3YS00Y2VlLWI1NzEtZmIwY2ZiZjY4OTA2XkEyXkFqcGdeQXVyMDI2NDg0NQ@@._V1_Ratio0.6762_AL_.jpg"
+            alt="movie.title"
+            style="width: 100%; height: 100%; object-fit: fill"
+          />
+          <div class="card text-bg-dark">
+            {{ movie.title }} ({{ movie.year}})
+          </div>
+        </div>
+      </div>
+
+      <a class="page-link d-flex align-items-center" aria-label="Next">
+        <span class="arrow" aria-hidden="true">&gt;</span>
+      </a>
+    </div>
+
+    <div class="row mt-3 rounded-3">
+      <div class="card border border-1" id="footer">
+        Copyright &copy Nguyen Phuoc Anh Tuan - 21120588
+      </div>
+    </div>
+  </body>
+</html>
