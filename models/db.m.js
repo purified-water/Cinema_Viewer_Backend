@@ -52,8 +52,8 @@ module.exports = {
                 CREATE TABLE IF NOT EXISTS movies (
                     id VARCHAR(20) PRIMARY KEY,
                     title VARCHAR(255),
-                    originalTitle VARCHAR(255),
-                    fullTitle VARCHAR(255),
+                    originaltitle VARCHAR(255),
+                    fulltitle VARCHAR(255),
                     year VARCHAR(4),
                     image VARCHAR(255),
                     releaseDate DATE,
@@ -63,7 +63,7 @@ module.exports = {
                     genreList JSONB,
                     countries VARCHAR(255),
                     languages VARCHAR(255),
-                    imDbRating VARCHAR(4),
+                    imdbrating VARCHAR(4),
                     boxOffice VARCHAR(20),
                     plotFull TEXT
                 )
@@ -102,7 +102,7 @@ module.exports = {
 
                 await new_db.none(`
                 CREATE TABLE IF NOT EXISTS reviews (
-                    movieId VARCHAR(20) NOT NULL,
+                    movieid VARCHAR(20) NOT NULL,
                     username VARCHAR(50) NOT NULL,
                     date DATE NOT NULL,
                     rate INT,
@@ -128,10 +128,6 @@ module.exports = {
         
     },
 
-   
 
-    // insertData: async (dataList) => {
-
-    // }
 
 }

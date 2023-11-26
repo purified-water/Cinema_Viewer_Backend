@@ -1,18 +1,23 @@
 const express = require('express')
 const fs = require('fs')
 require('dotenv').config();
-const dbHandle = require('./db/db')
-
+const dbHandle = require('./models/db.m')
+const getData = require('./models/data.m')
 
 const app = express();
 const path = require('path')
 const port = process.env.PORT;
 const hostname = 'localhost';
 
-//Lay data tu json 
-const jsonData = JSON.parse(fs.readFileSync('./data/data.json', 'utf-8'));
 
-// console.log('JSON la', jsonData.Movies);
+// dbHandle.createDatabase()
+
+console.log('MOVIES', getData.getMovies());
+//Lay data trong json
+
+
+
+
 
 // TO DO 
 /* Viet 1 ham hay file để lọc từng mảng movies, actors, reviews trong data
@@ -22,7 +27,6 @@ const jsonData = JSON.parse(fs.readFileSync('./data/data.json', 'utf-8'));
 
     */
 
-dbHandle.createDatabase()
 
 
 app.get("/", (req, res) => {
