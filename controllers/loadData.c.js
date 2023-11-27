@@ -11,6 +11,7 @@ exports.loadData = async (req, res, next) => {
         // console.log('INSERTING REVIEWS');
 
         await reviewControl.insertAll();
+        
         res.redirect('/');
     } catch (error) {
         next(error)

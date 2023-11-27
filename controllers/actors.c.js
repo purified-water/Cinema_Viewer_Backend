@@ -11,7 +11,7 @@ async function insertAll() {
         }
         
     }
-    console.log('inserted all actors');
+    ////console.log('inserted all actors');
 }
 
 

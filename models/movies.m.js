@@ -55,4 +55,42 @@ module.exports = {
             return el[0];
         });
     },
+
+    getHighestRating: async () => {
+        return await db.query(`
+            SELECT *
+            FROM movies
+            WHERE imdbrating IS NOT NULL AND imdbrating != ''
+            ORDER BY CAST(imdbrating AS DECIMAL(10,2)) DESC
+            LIMIT 5;
+        `)
+    },
+
+    getTopBoxOffice: async () => {
+        return await db.query(`
+            SELECT * FROM movies 
+            WHERE boxOffice IS NOT NULL 
+                AND boxOffice != '' 
+                AND boxOffice ~ '^[0-9,$]+(.[0-9]+)?$' 
+            ORDER BY REPLACE(SUBSTRING(boxOffice, 2), ',', '')::DECIMAL(18,2) DESC 
+            LIMIT 15;
+        `)
+    },
+
+    getFavorites: async () => {
+        return await db.query(`
+            SELECT *
+            FROM movies
+            WHERE isfav = TRUE
+            LIMIT 15;
+        `)
+    },
+
+    getMovieInfo: async (id) => {
+        return await db.oneOrNone(`
+            SELECT *
+            FROM movies m
+            WHERE m.id = id;
+        `)
+    }
 }

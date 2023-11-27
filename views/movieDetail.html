@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row d-flex">
+    <div class="col-md-5">
+      <div class="card border border-0 rounded-1" style="width: 18rem">
+        <img
+          class="rounded-1"
+          src="21588{mov.image}"
+          style="width: 18rem; height: 24rem; object-fit: cover"
+        />
+      </div>
+    </div>
+
+    21588{+header} 
+    21588{+nav}
+
+    <div class="col-md-7">
+      <h3>21588{mov.title}</h3>
+
+      <h5>Genre</h5>
+      <div class="d-flex flex-row">
+        <p>
+          21588{mov.genreList}
+          <!-- <span v-if="index < selectedMovie.genreList.length - 1">,</span> -->
+        </p>
+        <!-- <p v-else>N/A</p> -->
+      </div>
+
+      <h5>Plot</h5>
+      <p>21588{mov.plot}</p>
+      <!-- <p v-else>N/A</p> -->
+
+      <h5>Release Year</h5>
+      <p>21588{mov.realeasedate}</p>
+      <h5>imDb Score</h5>
+      <p>21588{mov.imdbrating}</p>
+      <p></p>
+      <!-- <p v-else>Rating not available</p> -->
+      <h5>Language</h5>
+      <p>21588{mov.languages}</p>
+    </div>
+  </div>
+
+  21588{+footer}
+
+  <script src="../public/js/darkmode.js"></script>
+
+  <!-- <div class="container">
+    <div class="row">
+      <h3 m-5>Actor/Actress List</h3>
+      <div class="col-md-3 mb-4" v-for="actor in selectedMovie.actorList">
+        <div
+          class="card border border-0 rounded-top-1 col-md-3 mb-4"
+          style="width: 15rem"
+        >
+          <img
+            :key="actor.id"
+            class="rounded-top-1"
+            :src="actor.image"
+            style="width: 15rem; height: 20rem; object-fit: cover"
+            id="actor-item"
+          />
+          <span class="text-center">{{actor.name}}</span>
+        </div>
+      </div>
+    </div>
+  </div> -->
+</div>

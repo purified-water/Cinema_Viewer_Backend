@@ -36,7 +36,8 @@ const createMoviesTable = async(new_db) => {
             languages VARCHAR(255),
             imdbrating VARCHAR(20),
             boxOffice VARCHAR(20),
-            plotFull TEXT
+            plotFull TEXT,
+            isfav BOOLEAN DEFAULT FALSE
         )
     `)
         console.log(`TABLE movies created successfully.`);
@@ -110,7 +111,7 @@ module.exports = {
             newDB
             );
             
-            console.log('\tEXIST?', exists);
+            //console.log('\tEXIST?', exists);
             // tạm thời để cái này để xóa db nếu đang có
             if (exists) {
                 // await db.none(`SELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE pg_stat_activity.datname = $1`, [newDB]);
@@ -120,6 +121,8 @@ module.exports = {
                 await db.none(`DROP DATABASE ${newDB}`);
                 console.log(`Database "${newDB}" DROPPED successfully.`);
                 exists = false
+
+                // return;
             }
 
             if (!exists) {
@@ -156,7 +159,7 @@ module.exports = {
             console.error('Error creating database:', error);
         } finally {
             // pgp.end();
-            console.log('PGP ENDED');
+            //console.log('PGP ENDED');
         }
         
     },

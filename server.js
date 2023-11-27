@@ -13,7 +13,7 @@ app.use(express.static(__dirname));
 
 // Tạo database và các bảng
 dbHandle.createDatabase()
-console.log('Finished database');
+//console.log('Finished database');
 
 
 
@@ -24,32 +24,42 @@ app.engine("html", myTemplateEngine);
 app.set("views", "./views");
 app.set("view engine", "html");
 
-
-
-// ROUTERS
-// Upload data
-const uploadData = require('./routers/uploadData.r')
-app.use('/', uploadData)
-
-const homeRoute = require("./routers/home.r");
-app.use("/", homeRoute);
-
 // MIDDLEWARE
 const middleware = require("./middleware/middleware");
 app.use(middleware.middleware);
 
+// ROUTERS
+// Upload data
+const uploadData = require('./routers/uploadData.r')
+app.use('/upload', uploadData)
 
-// Trigger data insertion when a GET request is made to "/"
+const homeRoute = require("./routers/home.r");
+app.use("/", homeRoute);
+
+
+
+
+app.get('/upload', async (req, res, next) => {
+    try {
+      await uploadData.loadData(req, res, next);
+      res.send('Data inserted successfully'); 
+    } catch (error) {
+      next(error);
+    }
+  });
+  
+
 app.get('/', async (req, res, next) => {
     try {
-        // Assuming your loadData controller is in uploadDataC
-        await uploadDataC.loadData(req, res, next);
+        await uploadData.loadData(req, res, next);
+        // Doi upload xong
+        homeRoute(req, res, next);
     } catch (error) {
         next(error);
     }
 });
 
 app.listen(port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${port}/`);
+    console.log(`Server running at http://${hostname}:${port}/upload`);
 });
 

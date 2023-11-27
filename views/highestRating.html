@@ -1,55 +1,59 @@
 <!-- HIGHEST RATINGS -->
 <div class="container p-0 mt-3">
-  <div class="container d-flex justify-content-between">
-    <div class="d-flex align-items-center">
-      <span class="arrow" aria-hidden="true">&lt;</span>
-    </div>
-
-    <div
-      class="card border border-0 rounded-1"
-      style="width: 18rem; height: 26rem"
-    >
-      <img
-        class="rounded-1"
-        src="https://m.media-amazon.com/images/M/MV5BZjhhMThhNDItNTY2MC00MmU1LTliNDEtNDdhZjdlNTY5ZDQ1XkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_Ratio0.6762_AL_.jpg"
-        alt="movie.title"
-        style="width: 100%; height: 100%; object-fit: cover"
-      />
-      <div
-        class="card-img-overlay d-flex flex-column justify-content-end"
-        style="height: 400px"
-      >
-        <div
-          class="container d-flex justify-content-center"
-          style="height: 400px"
-          @click="showMovieDetail(movie)"
-        ></div>
-
-        <div class="d-flex justify-content-center">
-          <ul class="pagination">
-            <li v-for="n in recentPages.total_pages" class="page-item-m">
-              <a class="page-link" href="#"> </a>
-            </li>
-          </ul>
-        </div>
-        <p
-          class="d-flex justify-content-center card-text text-white text-center m-0"
-          style="text-shadow: 3px 3px 3px black"
-        >
-          {{movie.title}}
-        </p>
-        <div
-          class="d-flex justify-content-evenly card-text text-warning text-center m-0"
-          style="text-shadow: 3px 3px 3px black"
-        >
-          <p class="m-0">{{runtimeStr}}</p>
-
-          <p class="m-0">{{ratings.imDb}}</p>
-        </div>
+  <div
+    class="carousels d-flex justify-content-center"
+    style="height: 100%; width: 100%"
+  >
+    <div id="carouselHighestRate" class="carousel slide w-30">
+      <div class="carousel-indicators">
+        21588{for index in highestRating}
+        <button
+          type="button"
+          data-bs-target="#carouselHighestRate"
+          data-bs-slide-to="21588{index}"
+        ></button>
+        {/for}
       </div>
-    </div>
-    <div class="d-flex align-items-center">
-      <div class="arrow" aria-hidden="true">&gt;</div>
+      <div class="carousel-inner">
+        21588{for index in highestRating}
+        <div class="carousel-item">
+          <img
+            src="21588{highestRating[index].image}"
+            class="d-block w-100"
+            alt="..."
+            width="300px"
+            height="400px"
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h5>21588{highestRating[index].title}</h5>
+            <p>
+              Length: <span>21588{highestRating[index].runtimeStr}</span> - Rating:
+              <span>21588{highestRating[index].imdbrating}</span>
+            </p>
+          </div>
+        </div>
+        {/for}
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselNewestMovie"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselNewestMovie"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
   </div>
 </div>
+
+<!----->

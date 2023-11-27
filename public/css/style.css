@@ -10,7 +10,48 @@ body {
   
 }
 .movie-item:hover {
-    transform: scale(1.2); /* Expand the card when hovered over */
+    transform: scale(1.2);
     z-index: 100;
   
 }
+/* #header {
+    border: 0.5px;
+    border-color: #333333;
+}
+
+#navbar {
+    border: 0.5px;
+    border-color: #333333;
+} */
+
+
+/* Dark mode styles */
+.dark-mode {
+    background-color: #252525;
+    color: #ffffff;
+}
+.dark-mode #header {
+    background-color: #3d1212;
+    color: #c18080;
+    border: #290a0a;
+}
+
+.dark-mode #navbar {
+    background-color: #100c3a;
+    color: #94a6e0;
+    border: #09052f;
+
+}
+
+
+
+.dark-mode .card {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+.dark-mode a {
+    color: #ffffff;
+}
+
+
